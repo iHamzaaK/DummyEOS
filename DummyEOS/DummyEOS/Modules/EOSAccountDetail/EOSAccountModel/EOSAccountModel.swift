@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class EOSAccountModel{
+    
+    var strAccountName: String
+    var strAccountKey: String
+    
+    
+    init(accountName : String , accountKey : String) {
+        self.strAccountKey = accountKey
+        self.strAccountName = accountName
+    }
+}

@@ -10,6 +10,20 @@ import UIKit
 
 class EOSAccountController: UIViewController {
 
+    @IBOutlet weak var btnBuy : UIButton!
+    @IBOutlet weak var btnSend : UIButton!
+    @IBOutlet weak var btnReceive : UIButton!
+
+    @IBOutlet weak var lblAccountNumber : UILabel!
+    @IBOutlet weak var lblAccountBalance : UILabel!
+    @IBOutlet weak var lblAmountUSD : UILabel!
+    
+    @IBOutlet weak var lblNetResource : UILabel!
+    @IBOutlet weak var lblRamResource : UILabel!
+    @IBOutlet weak var lblCPUResource : UILabel!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

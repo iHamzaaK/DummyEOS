@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct Constants {
+    var apiKey = "f584bbca9415fedbb7ee03cf33555064"
+    
+}

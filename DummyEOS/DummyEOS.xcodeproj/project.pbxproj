@@ -16,6 +16,7 @@
 		630B0BE822DF6DC200A92E6B /* EOSAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BE722DF6DC200A92E6B /* EOSAccountController.swift */; };
 		630B0BEA22DF6DD200A92E6B /* EOSAccountServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BE922DF6DD200A92E6B /* EOSAccountServiceLayer.swift */; };
 		630B0BEC22DF6DDE00A92E6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BEB22DF6DDE00A92E6B /* Constants.swift */; };
+		630B0BEE22DF7C7800A92E6B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BED22DF7C7800A92E6B /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		630B0BE722DF6DC200A92E6B /* EOSAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountController.swift; sourceTree = "<group>"; };
 		630B0BE922DF6DD200A92E6B /* EOSAccountServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountServiceLayer.swift; sourceTree = "<group>"; };
 		630B0BEB22DF6DDE00A92E6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		630B0BED22DF7C7800A92E6B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				630B0BC922DF6AE200A92E6B /* AppDelegate.swift */,
 				630B0BEB22DF6DDE00A92E6B /* Constants.swift */,
+				630B0BED22DF7C7800A92E6B /* Enums.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				630B0BEA22DF6DD200A92E6B /* EOSAccountServiceLayer.swift in Sources */,
 				630B0BE822DF6DC200A92E6B /* EOSAccountController.swift in Sources */,
 				630B0BCA22DF6AE200A92E6B /* AppDelegate.swift in Sources */,
+				630B0BEE22DF7C7800A92E6B /* Enums.swift in Sources */,
 				630B0BE622DF6DA500A92E6B /* EOSAccountModel.swift in Sources */,
 				630B0BEC22DF6DDE00A92E6B /* Constants.swift in Sources */,
 			);
@@ -363,14 +367,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 586FF64QYM;
 				INFOPLIST_FILE = DummyEOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.roche.DummyEOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -380,14 +386,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 586FF64QYM;
 				INFOPLIST_FILE = DummyEOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.roche.DummyEOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
