@@ -10,35 +10,51 @@ import UIKit
 
 class EOSAccountController: UIViewController {
 
-    @IBOutlet weak var btnBuy : UIButton!
-    @IBOutlet weak var btnSend : UIButton!
-    @IBOutlet weak var btnReceive : UIButton!
+//    @IBOutlet weak var btnBuy : UIButton!
+//    @IBOutlet weak var btnSend : UIButton!
+//    @IBOutlet weak var btnReceive : UIButton!
+//
+//    @IBOutlet weak var lblAccountNumber : UILabel!
+//    @IBOutlet weak var lblAccountBalance : UILabel!
+//    @IBOutlet weak var lblAmountUSD : UILabel!
+//
+//    @IBOutlet weak var lblNetResource : UILabel!
+//    @IBOutlet weak var lblRamResource : UILabel!
+//    @IBOutlet weak var lblCPUResource : UILabel!
 
-    @IBOutlet weak var lblAccountNumber : UILabel!
-    @IBOutlet weak var lblAccountBalance : UILabel!
-    @IBOutlet weak var lblAmountUSD : UILabel!
-    
-    @IBOutlet weak var lblNetResource : UILabel!
-    @IBOutlet weak var lblRamResource : UILabel!
-    @IBOutlet weak var lblCPUResource : UILabel!
-
+    var eosViewModel : EOSAccountViewModel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let example = "helloworldjs"
+        EOSAccountSerivce.getUserAccountBalance(name: example) { (isSuccess, balanceModel, msg) in
+            if isSuccess{
+                guard let balanceModel = balanceModel else { return }
+                EOSAccountSerivce.getUserResourceInfo(name: example, completion: { (isSuccess, resourceModel, msg) in
+                    if isSuccess{
+                        guard let resourceModel = resourceModel else { return }
 
-        // Do any additional setup after loading the view.
+                        self.eosViewModel = EOSAccountViewModel(eosBalance: balanceModel, eosResource: resourceModel)
+                        
+                        print(self.eosViewModel.accountBalance)
+                    }
+                })
+            }
+        }
+//        EOSAccountSerivce.getAccountInfo(name: "helloworldjs") { (isSuccess, model, msg) in
+//            if isSuccess{
+//                print(msg)
+//            }
+//        }
+//        EOSAccountSerivce.getUserResourceInfo(name: "helloworldjs") { (isSuccess, model, msg) in
+//            if isSuccess{
+//                EOSAccountSerivce.getUserAccountBalance(name: "helloworldjs", completion: { (isSuccess, model, msg) in
+//                    print(msg)
+//                })
+//                print(msg)
+//            }
+//        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

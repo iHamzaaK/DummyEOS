@@ -16,13 +16,14 @@ enum responseState {
     case unknown
     case networkIssue
     case timeOut
-    case notVarified
+    case notVerified
 }
 
 enum typeOfCall : String{
     
-    case getAccountBalance = "get_account_balance"
-    
+    case getAccountBalance = "&module=account&action=get_account_balance"
+    case getResourceInfo = "&module=account&action=get_account_resource_info"
+    case getAccountInfo = "&module=account&action=get_account_info"
 }
 
 

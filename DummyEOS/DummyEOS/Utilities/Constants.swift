@@ -9,6 +9,13 @@
 import Foundation
 
 struct Constants {
-    var apiKey = "f584bbca9415fedbb7ee03cf33555064"
+    static let apiKey = "f584bbca9415fedbb7ee03cf33555064"
+    static let baseURL = "https://api.eospark.com/api?"
+    
+    //Messages
+    static let wentWrongError = "Something went wrong, Please try again!"
+    static let internetError = "Please check your internet connection"
+    static let requestTimedOutError = "Request timed out. Please check your internet connection"
+
     
 }

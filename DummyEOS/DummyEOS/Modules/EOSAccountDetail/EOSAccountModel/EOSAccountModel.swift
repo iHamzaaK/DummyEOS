@@ -8,14 +8,29 @@
 
 import Foundation
 
-class EOSAccountModel{
+struct  EOSAccountModel {
+    let cpuWeight : String
+    let netWeight : String
     
-    var strAccountName: String
-    var strAccountKey: String
+    let cpuAvailableResource: Int
+    let cpuMaxResource : Int
+    let cpuUsedResource : Int
+    
+    let netAvailableResource: Int
+    let netMaxResource : Int
+    let netUsedResource : Int
+    
+    let ramAvailableResource: Int
+    let ramUsedResource : Int
+    
+    let balance : String
+    let stakeToOthers : String
+    let stakeToSelf : String
+    let unstake : String
     
     
-    init(accountName : String , accountKey : String) {
-        self.strAccountKey = accountKey
-        self.strAccountName = accountName
+    func parseModelFromJson(){
+        
     }
+    
 }
