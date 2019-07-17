@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		630B0BCA22DF6AE200A92E6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BC922DF6AE200A92E6B /* AppDelegate.swift */; };
-		630B0BCC22DF6AE200A92E6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BCB22DF6AE200A92E6B /* ViewController.swift */; };
 		630B0BCF22DF6AE200A92E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630B0BCD22DF6AE200A92E6B /* Main.storyboard */; };
 		630B0BD122DF6AE300A92E6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630B0BD022DF6AE300A92E6B /* Assets.xcassets */; };
 		630B0BD422DF6AE300A92E6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630B0BD222DF6AE300A92E6B /* LaunchScreen.storyboard */; };
+		630B0BE422DF6D9100A92E6B /* EOSAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BE322DF6D9100A92E6B /* EOSAccountViewModel.swift */; };
+		630B0BE622DF6DA500A92E6B /* EOSAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BE522DF6DA500A92E6B /* EOSAccountModel.swift */; };
+		630B0BE822DF6DC200A92E6B /* EOSAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BE722DF6DC200A92E6B /* EOSAccountController.swift */; };
+		630B0BEA22DF6DD200A92E6B /* EOSAccountServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BE922DF6DD200A92E6B /* EOSAccountServiceLayer.swift */; };
+		630B0BEC22DF6DDE00A92E6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BEB22DF6DDE00A92E6B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		630B0BC622DF6AE200A92E6B /* DummyEOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyEOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630B0BC922DF6AE200A92E6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		630B0BCB22DF6AE200A92E6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		630B0BCE22DF6AE200A92E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		630B0BD022DF6AE300A92E6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		630B0BD322DF6AE300A92E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		630B0BD522DF6AE300A92E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		630B0BE322DF6D9100A92E6B /* EOSAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountViewModel.swift; sourceTree = "<group>"; };
+		630B0BE522DF6DA500A92E6B /* EOSAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountModel.swift; sourceTree = "<group>"; };
+		630B0BE722DF6DC200A92E6B /* EOSAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountController.swift; sourceTree = "<group>"; };
+		630B0BE922DF6DD200A92E6B /* EOSAccountServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountServiceLayer.swift; sourceTree = "<group>"; };
+		630B0BEB22DF6DDE00A92E6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,82 @@
 		630B0BC822DF6AE200A92E6B /* DummyEOS */ = {
 			isa = PBXGroup;
 			children = (
-				630B0BC922DF6AE200A92E6B /* AppDelegate.swift */,
-				630B0BCB22DF6AE200A92E6B /* ViewController.swift */,
-				630B0BCD22DF6AE200A92E6B /* Main.storyboard */,
+				630B0BDF22DF6C1000A92E6B /* Service */,
+				630B0BDD22DF6BEA00A92E6B /* Modules */,
+				630B0BDC22DF6BCF00A92E6B /* Utilities */,
+				630B0BDB22DF6BBE00A92E6B /* Storyboards */,
 				630B0BD022DF6AE300A92E6B /* Assets.xcassets */,
-				630B0BD222DF6AE300A92E6B /* LaunchScreen.storyboard */,
 				630B0BD522DF6AE300A92E6B /* Info.plist */,
 			);
 			path = DummyEOS;
+			sourceTree = "<group>";
+		};
+		630B0BDB22DF6BBE00A92E6B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BD222DF6AE300A92E6B /* LaunchScreen.storyboard */,
+				630B0BCD22DF6AE200A92E6B /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		630B0BDC22DF6BCF00A92E6B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BC922DF6AE200A92E6B /* AppDelegate.swift */,
+				630B0BEB22DF6DDE00A92E6B /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		630B0BDD22DF6BEA00A92E6B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BDE22DF6BF400A92E6B /* EOSAccountDetail */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		630B0BDE22DF6BF400A92E6B /* EOSAccountDetail */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BE222DF6D3B00A92E6B /* EOSAccountController */,
+				630B0BE122DF6C5300A92E6B /* EOSAccountModel */,
+				630B0BE022DF6C3200A92E6B /* EOSAccountViewModel */,
+			);
+			path = EOSAccountDetail;
+			sourceTree = "<group>";
+		};
+		630B0BDF22DF6C1000A92E6B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BE922DF6DD200A92E6B /* EOSAccountServiceLayer.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		630B0BE022DF6C3200A92E6B /* EOSAccountViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BE322DF6D9100A92E6B /* EOSAccountViewModel.swift */,
+			);
+			path = EOSAccountViewModel;
+			sourceTree = "<group>";
+		};
+		630B0BE122DF6C5300A92E6B /* EOSAccountModel */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BE522DF6DA500A92E6B /* EOSAccountModel.swift */,
+			);
+			path = EOSAccountModel;
+			sourceTree = "<group>";
+		};
+		630B0BE222DF6D3B00A92E6B /* EOSAccountController */ = {
+			isa = PBXGroup;
+			children = (
+				630B0BE722DF6DC200A92E6B /* EOSAccountController.swift */,
+			);
+			path = EOSAccountController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				630B0BCC22DF6AE200A92E6B /* ViewController.swift in Sources */,
+				630B0BE422DF6D9100A92E6B /* EOSAccountViewModel.swift in Sources */,
+				630B0BEA22DF6DD200A92E6B /* EOSAccountServiceLayer.swift in Sources */,
+				630B0BE822DF6DC200A92E6B /* EOSAccountController.swift in Sources */,
 				630B0BCA22DF6AE200A92E6B /* AppDelegate.swift in Sources */,
+				630B0BE622DF6DA500A92E6B /* EOSAccountModel.swift in Sources */,
+				630B0BEC22DF6DDE00A92E6B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
