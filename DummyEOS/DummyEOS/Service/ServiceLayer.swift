@@ -33,13 +33,28 @@ struct EOSApi {
 class Router {
     static let shared = Router()
     //api method to retrieve account info based on typeCall from server.
-    func APIRouter(typeCall : typeOfCall , parameters: Dictionary<String,Any>?,method: httpMethod, completion: @escaping completionBlock){
+    func APIRouter(typeCall : typeOfCall , parameters: Dictionary<String,Any>?,method: httpMethod,completion: @escaping completionBlock){
         
-        guard let accountName =  parameters?["accountName"] as? String else { return }
+        var urlString = ""
+        if typeCall == typeOfCall.getEOSConversionToUSD {
+            urlString = getURLPathForConversion(typeCall: typeCall.rawValue)
+        }
+        else{
+        let accountName =  parameters?["accountName"] as? String
+         urlString = getURLPathForEOSInfo(typeCall: typeCall.rawValue, accountName: accountName ?? "")
+        }
         
-        let urlString = getURLPath(typeCall: typeCall.rawValue, accountName: accountName)
         guard let url = URL(string: urlString) else { return}
-        let dataTask =  URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let session = URLSession.shared
+        let timeOut = 60.0
+        let request = NSMutableURLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: timeOut)
+        request.httpMethod = method.rawValue
+        if typeCall == typeOfCall.getEOSConversionToUSD{
+            request.addValue(Constants.apiKeyForExchangeRate, forHTTPHeaderField: "X-CoinAPI-Key")
+        }
+      
+      
+        let dataTask =  session.dataTask(with: request as URLRequest)  { (data, response, error) in
             
             guard error == nil else {
                 if error?._code == NSURLErrorTimedOut {
@@ -82,12 +97,17 @@ class Router {
         dataTask.resume()
     }
     
-    func getURLPath(typeCall : String, accountName : String)-> String{
-        var baseURL = Constants.baseURL
-        if typeCall == typeOfCall.getEOSConversionToUSD.rawValue{
-            baseURL = Constants.baseURLForExchange
-        }
-        let strURL = baseURL + "apikey=" + Constants.apiKey + typeCall + "&account=" + accountName
+    func getURLPathForEOSInfo(typeCall : String, accountName : String)-> String{
+        
+        let strURL =  Constants.baseURL + "apikey=" + Constants.apiKey + typeCall + "&account=" + accountName
+        print(strURL)
+        return strURL
+        //        "https://api.eospark.com/api?module=account&action=get_account_resource_info&apikey=a9564ebc3289b7a14551baf8ad5ec60a&account=helloworldjs"
+    }
+    
+    func getURLPathForConversion(typeCall : String)-> String{
+        
+        let strURL =  Constants.baseURLForExchangeRate + typeCall
         print(strURL)
         return strURL
         //        "https://api.eospark.com/api?module=account&action=get_account_resource_info&apikey=a9564ebc3289b7a14551baf8ad5ec60a&account=helloworldjs"

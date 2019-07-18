@@ -38,10 +38,17 @@ class EOSAccountController: UIViewController {
                         self.eosViewModel = EOSAccountViewModel(eosBalance: balanceModel, eosResource: resourceModel)
                         
                         print(self.eosViewModel.accountBalance)
+                        print(self.eosViewModel.cpuPercentage)
+                        print(self.eosViewModel.ramSliderVal)
+                        print(self.eosViewModel.netStaked)
+                        print(self.eosViewModel.accountNETResourceUsed)
+                       
                     }
                 })
             }
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateViewModel), name: Notification.Name("exchangeRate"), object: nil)
 //        EOSAccountSerivce.getAccountInfo(name: "helloworldjs") { (isSuccess, model, msg) in
 //            if isSuccess{
 //                print(msg)
@@ -57,4 +64,14 @@ class EOSAccountController: UIViewController {
 //        }
     }
 
+}
+extension EOSAccountController{
+    @objc func updateViewModel(){
+        DispatchQueue.main.async {
+            let rate = (UIApplication.shared.delegate as! AppDelegate).exchangeRateUSD
+            let usdPrice = rate * self.eosViewModel.accountBalance
+            self.eosViewModel.accountBalanceUSD = String(usdPrice) + "$"
+        }
+      
+    }
 }

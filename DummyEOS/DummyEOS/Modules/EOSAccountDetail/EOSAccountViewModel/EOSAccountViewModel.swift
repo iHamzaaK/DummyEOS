@@ -31,6 +31,7 @@ class EOSAccountViewModel {
     var cpuStaked : String!
 
     var accountBalanceUSD : String!
+    
     var ramPercentage : String!
     var cpuPercentage : String!
     var netPercentage : String!
@@ -59,12 +60,8 @@ class EOSAccountViewModel {
         self.accountNETResourceMax = netModel.max ?? 0
         
         
-        EOSAccountSerivce.getConversionForEOSToUSD { (isSuccess, rate, msg) in
-            if isSuccess{
-                let usdPrice = rate * self.accountBalance
-                self.accountBalanceUSD = String(usdPrice) + "$"
-            }
-        }
+       
+      
         
         self.ramPercentage = getPercentageAndSliderValForResource(used: (ramModel.used ?? 0) , available: (ramModel.available ?? 0)).0
         self.netPercentage = getPercentageAndSliderValForResource(used: (netModel.used ?? 0) , available: (netModel.available ?? 0)).0
