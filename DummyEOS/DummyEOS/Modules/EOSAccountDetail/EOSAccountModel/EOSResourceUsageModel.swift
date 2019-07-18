@@ -8,7 +8,7 @@
 import Foundation
 
 class EOSResourceUsageModel : Codable {
-	let data : EOSData?
+	let data : EOSResourceDataModel?
 	let errmsg : String?
 	let errno : Int?
 }
@@ -23,7 +23,7 @@ class EOSRam : Codable {
     let used : Int?
 }
 
-class EOSData : Codable {
+class EOSResourceDataModel : Codable {
     let cpu : EOSCpu?
     let net : EOSCpu?
     let ram : EOSRam?

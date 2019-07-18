@@ -14,7 +14,7 @@ typealias failureCompletionBlock = (_ isSuccess: Bool, _ msg : String) -> Void
 
 
 struct EOSApi {
-    static func getUserAccountInfo(accountName: String,completion: @escaping completionBlock){
+    static func getAccountBalanceInfo(accountName: String,completion: @escaping completionBlock){
         Router.shared.APIRouter(typeCall: .getAccountBalance, parameters: ["accountName" : accountName], method: .get, completion: completion)
     }
     static func getUserResourceInfo(accountName: String,completion: @escaping completionBlock){
@@ -22,6 +22,10 @@ struct EOSApi {
     }
     static func getUserInfo(accountName: String,completion: @escaping completionBlock){
         Router.shared.APIRouter(typeCall: .getAccountInfo, parameters: ["accountName" : accountName], method: .get, completion: completion)
+    }
+    
+    static func getConvserionForEOS(completion: @escaping completionBlock){
+        Router.shared.APIRouter(typeCall: .getEOSConversionToUSD, parameters: nil, method: .get, completion: completion)
     }
     
 }
@@ -79,7 +83,11 @@ class Router {
     }
     
     func getURLPath(typeCall : String, accountName : String)-> String{
-        let strURL = Constants.baseURL + "apikey=" + Constants.apiKey + typeCall + "&account=" + accountName
+        var baseURL = Constants.baseURL
+        if typeCall == typeOfCall.getEOSConversionToUSD.rawValue{
+            baseURL = Constants.baseURLForExchange
+        }
+        let strURL = baseURL + "apikey=" + Constants.apiKey + typeCall + "&account=" + accountName
         print(strURL)
         return strURL
         //        "https://api.eospark.com/api?module=account&action=get_account_resource_info&apikey=a9564ebc3289b7a14551baf8ad5ec60a&account=helloworldjs"

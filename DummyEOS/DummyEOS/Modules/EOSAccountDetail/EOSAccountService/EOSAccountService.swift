@@ -7,8 +7,9 @@
 //
 
 import Foundation
-typealias EOSBalanceCompletion = (Bool, EOSBalanceModel?, String) -> Void
-typealias EOSResourceCompletion = (Bool, EOSResourceUsageModel?, String) -> Void
+typealias EOSBalanceCompletion = (Bool, EOSBalance?, String) -> Void
+typealias EOSResourceCompletion = (Bool, EOSResourceDataModel?, String) -> Void
+typealias EOSConversion = (Bool, Double, String) -> Void
 
 class EOSAccountSerivce{
     
@@ -18,9 +19,13 @@ class EOSAccountSerivce{
             
             if responseState == .success {
                 do{
-                    let resource = try JSONDecoder().decode(EOSResourceUsageModel.self, from: jsonData)
-                    print(resource.data?.cpu?.max)
-                    completion(true,resource,"")
+                     let resource = try JSONDecoder().decode(EOSResourceUsageModel.self, from: jsonData)
+                    guard let resourceData = resource.data else {
+                        completion(false,nil,Constants.wentWrongError)
+                        return
+                    }
+                    
+                    completion(true,resourceData,"")
                 }
                 catch{
                     print(Constants.wentWrongError)
@@ -36,16 +41,22 @@ class EOSAccountSerivce{
     }
     
     static func getUserAccountBalance(name : String, completion : @escaping EOSBalanceCompletion){
-        EOSApi.getUserAccountInfo(accountName: name) { (responseState, json, data) in
+        EOSApi.getAccountBalanceInfo(accountName: name) { (responseState, json, data) in
             guard let jsonData = data else { return }
             
             if responseState == .success{
                 //decode model here
                 do{
                     let balance = try JSONDecoder().decode(EOSBalanceModel.self, from: jsonData)
-                    print(balance.data?.balance)
                     
-                    completion(true,balance,"")
+                    guard let balanceDataModel = balance.data else {
+                        completion(false,nil,Constants.wentWrongError)
+
+                        return
+                    }
+
+                    
+                    completion(true,balanceDataModel,"")
                 }
                 catch{
                     print(Constants.wentWrongError)
@@ -60,6 +71,17 @@ class EOSAccountSerivce{
         }
     }
     
+    static func getConversionForEOSToUSD(completion: @escaping EOSConversion){
+        EOSApi.getConvserionForEOS { (responseState, json, data) in
+            if  responseState == .success{
+                let rate = json["rate"].doubleValue
+                completion(true, rate, "")
+            }
+            else{
+                completion(false, 0.0, Constants.wentWrongError)
+            }
+        }
+    }
 //    static func getAccountInfo(name: String , completion : @escaping EOSAccountCompletion){
 //        EOSApi.getUserAccountInfo(accountName: name){ (responseState, json, data) in
 //            guard let jsonData = data else { return }

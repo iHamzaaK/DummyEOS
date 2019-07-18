@@ -24,6 +24,7 @@ enum typeOfCall : String{
     case getAccountBalance = "&module=account&action=get_account_balance"
     case getResourceInfo = "&module=account&action=get_account_resource_info"
     case getAccountInfo = "&module=account&action=get_account_info"
+    case getEOSConversionToUSD = "EOS/USD"
 }
 
 

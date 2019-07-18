@@ -11,6 +11,7 @@ import Foundation
 struct Constants {
     static let apiKey = "f584bbca9415fedbb7ee03cf33555064"
     static let baseURL = "https://api.eospark.com/api?"
+    static let baseURLForExchange = "https://rest.coinapi.io/v1/exchangerate/"
     
     //Messages
     static let wentWrongError = "Something went wrong, Please try again!"

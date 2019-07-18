@@ -10,8 +10,9 @@ import Foundation
 import SwiftyJSON
 
 class EOSAccountViewModel {
+    
     var accoutName : String!
-    var accountBalance : String!
+    var accountBalance : Double!
     
     var accountCPUResourceAvailable : Int!
     var accountCPUResourceUsed : Int!
@@ -26,55 +27,68 @@ class EOSAccountViewModel {
     var accountNETResourceMax : Int!
     
     var accountStaked : String!
+    var netStaked : String!
+    var cpuStaked : String!
+
     var accountBalanceUSD : String!
     var ramPercentage : String!
     var cpuPercentage : String!
     var netPercentage : String!
-    var maxRam : String!
-    var maxCPU: String!
-    var maxNet : String!
-    var ramSliderVal : String!
-    var CPUSliderVal : String!
-    var netSliderVal : String!
+    
+    var ramSliderVal : Double!
+    var CPUSliderVal : Double!
+    var netSliderVal : Double!
     
     
-    init(eosBalance : EOSBalanceModel, eosResource: EOSResourceUsageModel){
-        self.accountBalance = eosBalance.data?.balance ?? ""
-        self.accountCPUResourceAvailable = eosResource.data?.cpu?.available ?? 0
-        self.accountCPUResourceUsed = eosResource.data?.cpu?.used ?? 0
-        self.accountCPUResourceMax = eosResource.data?.cpu?.max ?? 0
+    
+    init(eosBalance : EOSBalance, eosResource: EOSResourceDataModel){
         
-        self.accountRamResourceAvailable = eosResource.data?.ram?.available ?? 0
-        self.accountRamResourceUsed = eosResource.data?.ram?.used ?? 0
+        guard let cpuModel = eosResource.cpu, let ramModel = eosResource.ram , let netModel = eosResource.net, let stakedModel = eosResource.staked  else { return }
+
+        self.accountBalance = Double(eosBalance.balance ?? "") ?? 0.0
+        self.accountCPUResourceAvailable = cpuModel.available ?? 0
+        self.accountCPUResourceUsed = cpuModel.used ?? 0
+        self.accountCPUResourceMax = cpuModel.max ?? 0
+        
+        self.accountRamResourceAvailable = ramModel.available ?? 0
+        self.accountRamResourceUsed = ramModel.used ?? 0
 //        self.accountRamResourceMax = eosResource.data?.ram?
         
-        self.accountNETResourceAvailable = eosResource.data?.net?.available ?? 0
-        self.accountNETResourceUsed = eosResource.data?.net?.used ?? 0
-        self.accountNETResourceMax = eosResource.data?.net?.max ?? 0
+        self.accountNETResourceAvailable = netModel.available ?? 0
+        self.accountNETResourceUsed = netModel.used ?? 0
+        self.accountNETResourceMax = netModel.max ?? 0
         
         
+        EOSAccountSerivce.getConversionForEOSToUSD { (isSuccess, rate, msg) in
+            if isSuccess{
+                let usdPrice = rate * self.accountBalance
+                self.accountBalanceUSD = String(usdPrice) + "$"
+            }
+        }
         
+        self.ramPercentage = getPercentageAndSliderValForResource(used: (ramModel.used ?? 0) , available: (ramModel.available ?? 0)).0
+        self.netPercentage = getPercentageAndSliderValForResource(used: (netModel.used ?? 0) , available: (netModel.available ?? 0)).0
+        self.cpuPercentage = getPercentageAndSliderValForResource(used: (cpuModel.used ?? 0) , available: (cpuModel.available ?? 0)).0
         
+        self.ramSliderVal = getPercentageAndSliderValForResource(used: (ramModel.used ?? 0) , available: (ramModel.available ?? 0)).1
+        self.netSliderVal = getPercentageAndSliderValForResource(used: (netModel.used ?? 0) , available: (netModel.available ?? 0)).1
+        self.CPUSliderVal = getPercentageAndSliderValForResource(used: (cpuModel.used ?? 0) , available: (cpuModel.available ?? 0)).1
+        
+        self.netStaked = stakedModel.netWeight ?? ""
+        self.cpuStaked = stakedModel.cpuWeight ?? ""
+
+
+
         
     }
     
-//    init(eosAccount : EOSAccountModel) {
-//        self.accoutName = eosAccount.strName
-//        self.accountBalance = balance
-//        self.accountCPUResource = cpuResource
-//        self.accountRamResource = ramResource
-//        self.accountNETResource = netResource
-//        self.accountStaked = accountStaked
-//        self.accountBalanceUSD = accountBalanceUSD
-//        self.ramPercentage = ramPercentage
-//        self.cpuPercentage = cpuPercentage
-//        self.netPercentage = netPercentage
-//        self.maxRam = maxRam
-//        self.maxCPU = maxCPU
-//        self.maxNet = maxNet
-//    }
+    func getPercentageAndSliderValForResource(used: Int , available : Int)-> (String,Double){
+        let sliderVal : Double = Double(used / available)
+        let strPercent = String(sliderVal * 100) + "%"
+        return (strPercent,sliderVal)
+    }
     
-//    func parseModel(e)
     
+
    
 }
