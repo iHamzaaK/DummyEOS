@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResourceHeaderView" rowHeight="53" id="GDJ-Kh-Bho" customClass="ResourceHeaderViewCell" customModule="DummyEOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GDJ-Kh-Bho" id="vea-G3-DR3">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="52.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESOURCES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcD-nN-hLe">
+                        <rect key="frame" x="8" y="32" width="80.5" height="15.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RUa-bT-5sG">
+                        <rect key="frame" x="304" y="0.0" width="100" height="52.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STAKED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pm-cd-EtP">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="32.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="W6v-OF-beE">
+                                <rect key="frame" x="0.0" y="32.5" width="100" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-51-XPK">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eoslogo" translatesAutoresizingMaskIntoConstraints="NO" id="MZh-4Z-TQf">
+                                        <rect key="frame" x="80" y="0.0" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MZh-4Z-TQf" secondAttribute="height" multiplier="1:1" id="5Ss-wT-rpn"/>
+                                            <constraint firstAttribute="width" constant="20" id="qTH-8l-Lgv"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="GbI-bg-zqS"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="rcD-nN-hLe" secondAttribute="bottom" constant="5" id="AwU-6g-AkM"/>
+                    <constraint firstItem="rcD-nN-hLe" firstAttribute="leading" secondItem="vea-G3-DR3" secondAttribute="leading" constant="8" id="HgV-u4-h8b"/>
+                    <constraint firstAttribute="trailing" secondItem="RUa-bT-5sG" secondAttribute="trailing" constant="10" id="mkK-5d-mQB"/>
+                    <constraint firstAttribute="bottom" secondItem="RUa-bT-5sG" secondAttribute="bottom" id="o8m-PO-N7a"/>
+                    <constraint firstItem="RUa-bT-5sG" firstAttribute="top" secondItem="vea-G3-DR3" secondAttribute="top" id="x8t-Wy-sh4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblStaked" destination="ogp-51-XPK" id="QaN-fI-7E8"/>
+            </connections>
+            <point key="canvasLocation" x="40.579710144927539" y="78.683035714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="eoslogo" width="20" height="20"/>
+    </resources>
+</document>

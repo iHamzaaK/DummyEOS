@@ -16,7 +16,7 @@ class EOSBalanceModel : Codable {
 
 class EOSBalance : Codable {
 	let balance : String?
-	let stakeToOthers : String?
-	let stakeToSelf : String?
+	let stake_to_others : String?
+	let stake_to_self : String?
 	let unstake : String?
 }

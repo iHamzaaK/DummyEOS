@@ -21,7 +21,24 @@
 		630B0BF122DF95A800A92E6B /* EOSAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BF022DF95A800A92E6B /* EOSAccountService.swift */; };
 		630B0BF922DFB76300A92E6B /* EOSResourceUsageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BF422DFB76300A92E6B /* EOSResourceUsageModel.swift */; };
 		630B0BFD22DFBAC300A92E6B /* EOSBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BFC22DFBAC300A92E6B /* EOSBalance.swift */; };
+		630B0BFF22E0B3DE00A92E6B /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0BFE22E0B3DE00A92E6B /* UtilFunctions.swift */; };
+		630B0C0222E0B69D00A92E6B /* ResourceCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B0C0122E0B69D00A92E6B /* ResourceCellView.xib */; };
+		630B0C0422E0C20A00A92E6B /* ResourceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B0C0322E0C20A00A92E6B /* ResourceHeaderView.xib */; };
+		630B0C0622E0C57700A92E6B /* EOSAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0C0522E0C57700A92E6B /* EOSAccountTableViewCell.swift */; };
+		630B0C0922E0CBB500A92E6B /* ResourceHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0C0822E0CBB500A92E6B /* ResourceHeaderViewCell.swift */; };
+		630B0C0B22E142FE00A92E6B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0C0A22E142FE00A92E6B /* Extensions.swift */; };
+		630B0C1322E1592100A92E6B /* DummyEOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B0C1222E1592100A92E6B /* DummyEOSTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		630B0C1522E1592100A92E6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 630B0BBE22DF6AE200A92E6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 630B0BC522DF6AE200A92E6B;
+			remoteInfo = DummyEOS;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2FAC52E65CB0F8C351F6ED77 /* Pods_DummyEOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyEOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +57,15 @@
 		630B0BF022DF95A800A92E6B /* EOSAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountService.swift; sourceTree = "<group>"; };
 		630B0BF422DFB76300A92E6B /* EOSResourceUsageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EOSResourceUsageModel.swift; sourceTree = "<group>"; };
 		630B0BFC22DFBAC300A92E6B /* EOSBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EOSBalance.swift; sourceTree = "<group>"; };
+		630B0BFE22E0B3DE00A92E6B /* UtilFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
+		630B0C0122E0B69D00A92E6B /* ResourceCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceCellView.xib; sourceTree = "<group>"; };
+		630B0C0322E0C20A00A92E6B /* ResourceHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceHeaderView.xib; sourceTree = "<group>"; };
+		630B0C0522E0C57700A92E6B /* EOSAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOSAccountTableViewCell.swift; sourceTree = "<group>"; };
+		630B0C0822E0CBB500A92E6B /* ResourceHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceHeaderViewCell.swift; sourceTree = "<group>"; };
+		630B0C0A22E142FE00A92E6B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		630B0C1022E1592100A92E6B /* DummyEOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DummyEOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		630B0C1222E1592100A92E6B /* DummyEOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyEOSTests.swift; sourceTree = "<group>"; };
+		630B0C1422E1592100A92E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B514886DB1C5296868CFAEC3 /* Pods-DummyEOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyEOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DummyEOS/Pods-DummyEOS.release.xcconfig"; sourceTree = "<group>"; };
 		EF8A6C6D1D894F817F50AD58 /* Pods-DummyEOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyEOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DummyEOS/Pods-DummyEOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +79,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		630B0C0D22E1592100A92E6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -60,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				630B0BC822DF6AE200A92E6B /* DummyEOS */,
+				630B0C1122E1592100A92E6B /* DummyEOSTests */,
 				630B0BC722DF6AE200A92E6B /* Products */,
 				665DD006C97FB38D02A413CE /* Pods */,
 				8ECF31C4E97BA37C3B347974 /* Frameworks */,
@@ -70,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				630B0BC622DF6AE200A92E6B /* DummyEOS.app */,
+				630B0C1022E1592100A92E6B /* DummyEOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +137,8 @@
 				630B0BC922DF6AE200A92E6B /* AppDelegate.swift */,
 				630B0BEB22DF6DDE00A92E6B /* Constants.swift */,
 				630B0BED22DF7C7800A92E6B /* Enums.swift */,
+				630B0BFE22E0B3DE00A92E6B /* UtilFunctions.swift */,
+				630B0C0A22E142FE00A92E6B /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -117,10 +154,12 @@
 		630B0BDE22DF6BF400A92E6B /* EOSAccountDetail */ = {
 			isa = PBXGroup;
 			children = (
+				630B0C0022E0B66200A92E6B /* EOSAcccountViews */,
 				630B0BEF22DF959600A92E6B /* EOSAccountService */,
 				630B0BE222DF6D3B00A92E6B /* EOSAccountController */,
 				630B0BE122DF6C5300A92E6B /* EOSAccountModel */,
 				630B0BE022DF6C3200A92E6B /* EOSAccountViewModel */,
+				630B0C0722E0C57D00A92E6B /* EOSAccountCell */,
 			);
 			path = EOSAccountDetail;
 			sourceTree = "<group>";
@@ -167,6 +206,33 @@
 			path = EOSAccountService;
 			sourceTree = "<group>";
 		};
+		630B0C0022E0B66200A92E6B /* EOSAcccountViews */ = {
+			isa = PBXGroup;
+			children = (
+				630B0C0122E0B69D00A92E6B /* ResourceCellView.xib */,
+				630B0C0322E0C20A00A92E6B /* ResourceHeaderView.xib */,
+			);
+			path = EOSAcccountViews;
+			sourceTree = "<group>";
+		};
+		630B0C0722E0C57D00A92E6B /* EOSAccountCell */ = {
+			isa = PBXGroup;
+			children = (
+				630B0C0522E0C57700A92E6B /* EOSAccountTableViewCell.swift */,
+				630B0C0822E0CBB500A92E6B /* ResourceHeaderViewCell.swift */,
+			);
+			path = EOSAccountCell;
+			sourceTree = "<group>";
+		};
+		630B0C1122E1592100A92E6B /* DummyEOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				630B0C1222E1592100A92E6B /* DummyEOSTests.swift */,
+				630B0C1422E1592100A92E6B /* Info.plist */,
+			);
+			path = DummyEOSTests;
+			sourceTree = "<group>";
+		};
 		665DD006C97FB38D02A413CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +272,24 @@
 			productReference = 630B0BC622DF6AE200A92E6B /* DummyEOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		630B0C0F22E1592100A92E6B /* DummyEOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 630B0C1722E1592100A92E6B /* Build configuration list for PBXNativeTarget "DummyEOSTests" */;
+			buildPhases = (
+				630B0C0C22E1592100A92E6B /* Sources */,
+				630B0C0D22E1592100A92E6B /* Frameworks */,
+				630B0C0E22E1592100A92E6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				630B0C1622E1592100A92E6B /* PBXTargetDependency */,
+			);
+			name = DummyEOSTests;
+			productName = DummyEOSTests;
+			productReference = 630B0C1022E1592100A92E6B /* DummyEOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -218,6 +302,10 @@
 				TargetAttributes = {
 					630B0BC522DF6AE200A92E6B = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					630B0C0F22E1592100A92E6B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 630B0BC522DF6AE200A92E6B;
 					};
 				};
 			};
@@ -235,6 +323,7 @@
 			projectRoot = "";
 			targets = (
 				630B0BC522DF6AE200A92E6B /* DummyEOS */,
+				630B0C0F22E1592100A92E6B /* DummyEOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,9 +333,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630B0C0222E0B69D00A92E6B /* ResourceCellView.xib in Resources */,
 				630B0BD422DF6AE300A92E6B /* LaunchScreen.storyboard in Resources */,
+				630B0C0422E0C20A00A92E6B /* ResourceHeaderView.xib in Resources */,
 				630B0BD122DF6AE300A92E6B /* Assets.xcassets in Resources */,
 				630B0BCF22DF6AE200A92E6B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630B0C0E22E1592100A92E6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,13 +409,33 @@
 				630B0BFD22DFBAC300A92E6B /* EOSBalance.swift in Sources */,
 				630B0BEE22DF7C7800A92E6B /* Enums.swift in Sources */,
 				630B0BE622DF6DA500A92E6B /* EOSAccountModel.swift in Sources */,
+				630B0BFF22E0B3DE00A92E6B /* UtilFunctions.swift in Sources */,
+				630B0C0922E0CBB500A92E6B /* ResourceHeaderViewCell.swift in Sources */,
 				630B0BEC22DF6DDE00A92E6B /* Constants.swift in Sources */,
 				630B0BF922DFB76300A92E6B /* EOSResourceUsageModel.swift in Sources */,
 				630B0BF122DF95A800A92E6B /* EOSAccountService.swift in Sources */,
+				630B0C0622E0C57700A92E6B /* EOSAccountTableViewCell.swift in Sources */,
+				630B0C0B22E142FE00A92E6B /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630B0C0C22E1592100A92E6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				630B0C1322E1592100A92E6B /* DummyEOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		630B0C1622E1592100A92E6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 630B0BC522DF6AE200A92E6B /* DummyEOS */;
+			targetProxy = 630B0C1522E1592100A92E6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		630B0BCD22DF6AE200A92E6B /* Main.storyboard */ = {
@@ -495,6 +613,44 @@
 			};
 			name = Release;
 		};
+		630B0C1822E1592100A92E6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DummyEOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.roche.DummyEOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DummyEOS.app/DummyEOS";
+			};
+			name = Debug;
+		};
+		630B0C1922E1592100A92E6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DummyEOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.roche.DummyEOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DummyEOS.app/DummyEOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +668,15 @@
 			buildConfigurations = (
 				630B0BD922DF6AE300A92E6B /* Debug */,
 				630B0BDA22DF6AE300A92E6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		630B0C1722E1592100A92E6B /* Build configuration list for PBXNativeTarget "DummyEOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630B0C1822E1592100A92E6B /* Debug */,
+				630B0C1922E1592100A92E6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,8 +14,8 @@ class EOSResourceUsageModel : Codable {
 }
 
 class EOSStaked : Codable {
-    let cpuWeight : String?
-    let netWeight : String?
+    let net_weight : String?
+    let cpu_weight : String?
 }
 
 class EOSRam : Codable {
