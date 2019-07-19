@@ -40,7 +40,7 @@ class EOSAccountViewModel {
     var CPUSliderVal : Double!
     var netSliderVal : Double!
     
-    private var arrResource: [resourceTableModel]?
+    var arrResource: [resourceTableModel]?
     
     init(eosBalance : EOSBalance, eosResource: EOSResourceDataModel){
         

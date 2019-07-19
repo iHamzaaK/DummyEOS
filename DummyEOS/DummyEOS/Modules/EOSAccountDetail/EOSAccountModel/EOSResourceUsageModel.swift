@@ -7,23 +7,23 @@
 
 import Foundation
 
-class EOSResourceUsageModel : Codable {
+struct EOSResourceUsageModel : Codable {
 	let data : EOSResourceDataModel?
 	let errmsg : String?
 	let errno : Int?
 }
 
-class EOSStaked : Codable {
+struct EOSStaked : Codable {
     let net_weight : String?
     let cpu_weight : String?
 }
 
-class EOSRam : Codable {
+struct EOSRam : Codable {
     let available : Int?
     let used : Int?
 }
 
-class EOSResourceDataModel : Codable {
+struct EOSResourceDataModel : Codable {
     let cpu : EOSCpu?
     let net : EOSCpu?
     let ram : EOSRam?
@@ -31,7 +31,7 @@ class EOSResourceDataModel : Codable {
     let unstake : EOSStaked?
 }
 
-class EOSCpu : Codable {
+struct EOSCpu : Codable {
     let available : Int?
     let max : Int?
     let used : Int?

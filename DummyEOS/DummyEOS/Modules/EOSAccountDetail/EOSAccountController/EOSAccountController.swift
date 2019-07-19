@@ -25,7 +25,7 @@ class EOSAccountController: UIViewController {
 //    @IBOutlet weak var lblRamResource : UILabel!
 //    @IBOutlet weak var lblCPUResource : UILabel!
 
-    var eosViewModel : EOSAccountViewModel!
+    var eosViewModel : EOSAccountViewModel?
     
     
     override func viewDidLoad() {
@@ -54,9 +54,8 @@ extension EOSAccountController{
     
     private func setData(){
         DispatchQueue.main.async {
-            self.lblAccountBalance.text = String(self.eosViewModel.accountBalance ?? 0.0)
-            self.tblViewResource.delegate = self
-            self.tblViewResource.dataSource = self
+            guard let eosViewModel = self.eosViewModel else { return }
+            self.lblAccountBalance.text = String(eosViewModel.accountBalance ?? 0.0)
             self.tblViewResource.reloadData()
         }
         getExchangeRateForEOS()
@@ -84,10 +83,11 @@ extension EOSAccountController{
     func getExchangeRateForEOS(){
         EOSAccountSerivce.getConversionForEOSToUSD { (isSuccess, rate, msg) in
             if isSuccess{
-                let usdPrice = rate * (self.eosViewModel.accountBalance ?? 0.0)
-                self.eosViewModel.accountBalanceUSD = String(usdPrice.rounded(toPlaces: 2)).convertIntoCurrency()
+                guard let eosViewModel = self.eosViewModel else { return }
+                let usdPrice = rate * (eosViewModel.accountBalance ?? 0.0)
+                self.eosViewModel?.accountBalanceUSD = String(usdPrice.rounded(toPlaces: 2)).convertIntoCurrency()
                 DispatchQueue.main.async {
-                    self.lblAmountUSD.text = self.eosViewModel.accountBalanceUSD
+                    self.lblAmountUSD.text = eosViewModel.accountBalanceUSD
                 }
             }
             else{
@@ -114,11 +114,12 @@ extension EOSAccountController{
 extension EOSAccountController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.eosViewModel.getArrResourceCount()
+        guard let eosViewModel = self.eosViewModel else { return 0}
+        return eosViewModel.getArrResourceCount()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCellView", for: indexPath) as! EOSAccountTableViewCell
-        cell.resourceTableModel = self.eosViewModel.getArrResource()[indexPath.row]
+        cell.resourceTableModel = self.eosViewModel?.getArrResource()[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,8 +128,7 @@ extension EOSAccountController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "ResourceHeaderView") as! ResourceHeaderViewCell
-        
-        headerCell.lblStaked.text = self.eosViewModel.cpuStaked
+        headerCell.lblStaked.text = self.eosViewModel?.cpuStaked
         return headerCell
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
