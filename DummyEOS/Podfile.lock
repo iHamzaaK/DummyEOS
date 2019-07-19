@@ -1,16 +1,20 @@
 PODS:
+  - JGProgressHUD (2.0.3)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
+  - JGProgressHUD
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - JGProgressHUD
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 76baaca8ae83fa640609e6b8237869b06312f3b1
+PODFILE CHECKSUM: 023dbe0b1069cf8818d7aaab80de5d9ff12cb991
 
 COCOAPODS: 1.5.3

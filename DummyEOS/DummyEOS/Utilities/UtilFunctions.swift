@@ -28,4 +28,9 @@ class UtilFunctions{
         
         presenter.present(alert, animated: true, completion: nil)
     }
+    
+    static func registerNib(_ nibName : String, cellIdentifier : String , tblView : UITableView){
+        let nib = UINib(nibName: nibName, bundle: nil)
+        tblView.register(nib, forCellReuseIdentifier: cellIdentifier)
+    }
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 enum responseState {
     case success
@@ -32,3 +32,14 @@ enum httpMethod:String {
     case post = "POST"
     case get = "GET"
 }
+
+enum EOSAccountCells : String {
+    case resourceCellView = "ResourceCellView"
+    case resourceHeaderView = "ResourceHeaderView"
+}
+
+enum EOSAccountRowEstimatedHeight : CGFloat{
+    case accountCellHeight = 80
+    case accountHeaderHeight = 70
+}
+

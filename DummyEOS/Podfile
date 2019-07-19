@@ -6,6 +6,7 @@ target 'DummyEOS' do
   use_frameworks!
 
 	pod 'SwiftyJSON'
+    pod 'JGProgressHUD'
   # Pods for DummyEOS
 
 end

@@ -16,7 +16,6 @@ class EOSAccountSerivce{
     static func getUserResourceInfo(name: String, completion : @escaping EOSResourceCompletion){
         EOSApi.getUserResourceInfo(accountName: name) { (responseState, json, data) in
             guard let jsonData = data else { return }
-            
             if responseState == .success {
                 do{
                      let resource = try JSONDecoder().decode(EOSResourceUsageModel.self, from: jsonData)
@@ -43,19 +42,14 @@ class EOSAccountSerivce{
     static func getUserAccountBalance(name : String, completion : @escaping EOSBalanceCompletion){
         EOSApi.getAccountBalanceInfo(accountName: name) { (responseState, json, data) in
             guard let jsonData = data else { return }
-            
             if responseState == .success{
                 //decode model here
                 do{
                     let balance = try JSONDecoder().decode(EOSBalanceModel.self, from: jsonData)
-                    
                     guard let balanceDataModel = balance.data else {
                         completion(false,nil,Constants.wentWrongError)
-
                         return
                     }
-
-                    
                     completion(true,balanceDataModel,"")
                 }
                 catch{
@@ -82,29 +76,4 @@ class EOSAccountSerivce{
             }
         }
     }
-//    static func getAccountInfo(name: String , completion : @escaping EOSAccountCompletion){
-//        EOSApi.getUserAccountInfo(accountName: name){ (responseState, json, data) in
-//            guard let jsonData = data else { return }
-//
-//            if responseState == .success{
-//                //decode model here
-//                do{
-//                    let balance = try JSONDecoder().decode(EOSBalanceModel.self, from: jsonData)
-//                    print(balance.data?.balance)
-//                    completion(true,nil,"")
-//                }
-//                catch{
-//                    print(Constants.wentWrongError)
-//                }
-//
-//            }
-//            else{
-//                Router.shared.parseFailure(status: responseState, json: json, completion: { (isSuccess, msg) in
-//                    completion(isSuccess,nil,msg)
-//                })
-//            }
-//        }
-//
-//    }
-    
 }

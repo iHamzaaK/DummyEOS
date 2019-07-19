@@ -18,6 +18,7 @@ struct Constants {
     static let wentWrongError = "Something went wrong, Please try again!"
     static let internetError = "Please check your internet connection"
     static let requestTimedOutError = "Request timed out. Please check your internet connection"
-
+    static let comingSoon = "Coming Soon"
+    static let errorTitle = "Error"
     
 }

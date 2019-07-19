@@ -37,35 +37,27 @@ class DummyEOSTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         eosAccountController = nil
-
     }
     
     func testControllerHasTableView() {
-        
         XCTAssertNotNil(eosAccountController.tblViewResource,
                         "Controller should have a tableview")
     }
 
     func testTableViewDelegateSetUpCorrectly() {
-        
         XCTAssertTrue(eosAccountController.tblViewResource.delegate is EOSAccountController , "EOSAccountController does not conform to UITableView delegate protocol")
-        
     }
     
     
     func testTableViewDataSourceSetUpCorrectly() {
-        
         XCTAssertTrue(eosAccountController.tblViewResource.dataSource is EOSAccountController , "EOSAccountController does not conform to UITableView datasource protocol")
-        
     }
     
     func testCorrectNoOfRowsReturnAfterGettingAllData() {
-        
         self.eosAccountController.eosViewModel = EOSAccountViewModel(eosBalance: sampleEOSBalance, eosResource: sampleEOSResource)
         self.eosAccountController.tblViewResource.reloadData()
         XCTAssertNotNil(self.eosAccountController.eosViewModel?.getArrResource)
         XCTAssertTrue(self.eosAccountController.tblViewResource.numberOfRows(inSection: 0) == self.eosAccountController.eosViewModel?.getArrResourceCount()  , "Table views rows should be equal to top categories")
-        
     }
     func testServiceCallForUserBalance()  {
         
@@ -83,39 +75,30 @@ class DummyEOSTests: XCTestCase {
         waitForExpectations(timeout: 20, handler: nil)
     }
     func testServiceCallForResource()  {
-        
         let expectation = self.expectation(description: "should recieve data")
         EOSAccountSerivce.getUserResourceInfo(name: "helloworldjs") { (isSuccess, resourceModel, msg) in
             if isSuccess{
                 expectation.fulfill()
-                
             }
             else{
                 XCTFail("service failed")
             }
         }
-        
         waitForExpectations(timeout: 20, handler: nil)
     }
     func testEOSAccountViewModel(){
-        
-     
         XCTAssertEqual(sampleEOSBalance.balance, String(sampleEOSAccountViewModel.accountBalance ?? 0.0))
-        
         //CPU
         XCTAssertEqual(Double(sampleEOSCpu.available ?? 0), sampleEOSAccountViewModel.accountCPUResourceAvailable)
         XCTAssertEqual(Double(sampleEOSCpu.used ?? 0), sampleEOSAccountViewModel.accountCPUResourceUsed)
         XCTAssertEqual(Double(sampleEOSCpu.available ?? 0), sampleEOSAccountViewModel.accountCPUResourceAvailable)
-        
         //NET
         XCTAssertEqual(Double(sampleEOSNet.available ?? 0), sampleEOSAccountViewModel.accountNETResourceAvailable)
         XCTAssertEqual(Double(sampleEOSNet.used ?? 0), sampleEOSAccountViewModel.accountNETResourceUsed)
         XCTAssertEqual(Double(sampleEOSNet.max ?? 0), sampleEOSAccountViewModel.accountNETResourceMax)
-        
         //RAM
         XCTAssertEqual(Double(sampleEOSRam.available ?? 0), sampleEOSAccountViewModel.accountRamResourceAvailable)
         XCTAssertEqual(Double(sampleEOSRam.used ?? 0), sampleEOSAccountViewModel.accountRamResourceUsed)
-
         //array of resource not nil
         XCTAssertNotNil(sampleEOSAccountViewModel.arrResource)
         

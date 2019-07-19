@@ -43,19 +43,15 @@ class Router {
         let accountName =  parameters?["accountName"] as? String
          urlString = getURLPathForEOSInfo(typeCall: typeCall.rawValue, accountName: accountName ?? "")
         }
-        
         guard let url = URL(string: urlString) else { return}
         let session = URLSession.shared
-        let timeOut = 60.0
+        let timeOut = 30.0
         let request = NSMutableURLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: timeOut)
         request.httpMethod = method.rawValue
         if typeCall == typeOfCall.getEOSConversionToUSD{
             request.addValue(Constants.apiKeyForExchangeRate, forHTTPHeaderField: "X-CoinAPI-Key")
         }
-      
-      
         let dataTask =  session.dataTask(with: request as URLRequest)  { (data, response, error) in
-            
             guard error == nil else {
                 if error?._code == NSURLErrorTimedOut {
                     completion(.networkIssue,JSON.null, nil)
@@ -92,25 +88,21 @@ class Router {
             } catch _ {
                 completion(.unknown,JSON.null, nil)
             }
-            
         }
         dataTask.resume()
     }
     
     func getURLPathForEOSInfo(typeCall : String, accountName : String)-> String{
-        
         let strURL =  Constants.baseURL + "apikey=" + Constants.apiKey + typeCall + "&account=" + accountName
         print(strURL)
         return strURL
-        //        "https://api.eospark.com/api?module=account&action=get_account_resource_info&apikey=a9564ebc3289b7a14551baf8ad5ec60a&account=helloworldjs"
+        
     }
     
     func getURLPathForConversion(typeCall : String)-> String{
-        
         let strURL =  Constants.baseURLForExchangeRate + typeCall
         print(strURL)
         return strURL
-        //        "https://api.eospark.com/api?module=account&action=get_account_resource_info&apikey=a9564ebc3289b7a14551baf8ad5ec60a&account=helloworldjs"
     }
     
     func parseFailure(status: responseState, json: JSON, completion:failureCompletionBlock){

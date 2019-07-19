@@ -13,11 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var exchangeRateUSD = 0.0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        self.getExchangeRateForEOS()
         return true
     }
 
@@ -43,16 +41,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func getExchangeRateForEOS(){
-        EOSAccountSerivce.getConversionForEOSToUSD { (isSuccess, rate, msg) in
-            if isSuccess{
-                self.exchangeRateUSD = rate
-                NotificationCenter.default.post(name: NSNotification.Name("exchangeRate"), object: nil)
-            }
-            else{
-                self.getExchangeRateForEOS()
-            }
-        }
-    }
 }
 
