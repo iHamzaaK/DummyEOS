@@ -7,12 +7,13 @@
 //
 
 import Foundation
+//CompletionBlocks typeAlias
 typealias EOSBalanceCompletion = (Bool, EOSBalance?, String) -> Void
 typealias EOSResourceCompletion = (Bool, EOSResourceDataModel?, String) -> Void
 typealias EOSConversion = (Bool, Double, String) -> Void
 
 class EOSAccountSerivce{
-    
+    //Api Call for UserInfo
     static func getUserResourceInfo(name: String, completion : @escaping EOSResourceCompletion){
         EOSApi.getUserResourceInfo(accountName: name) { (responseState, json, data) in
             guard let jsonData = data else { return }
@@ -23,7 +24,6 @@ class EOSAccountSerivce{
                         completion(false,nil,Constants.wentWrongError)
                         return
                     }
-                    
                     completion(true,resourceData,"")
                 }
                 catch{
@@ -38,7 +38,7 @@ class EOSAccountSerivce{
             }
         }
     }
-    
+    //Api Call for Account Balance
     static func getUserAccountBalance(name : String, completion : @escaping EOSBalanceCompletion){
         EOSApi.getAccountBalanceInfo(accountName: name) { (responseState, json, data) in
             guard let jsonData = data else { return }
@@ -64,7 +64,7 @@ class EOSAccountSerivce{
             }
         }
     }
-    
+    //Api call for exchange rate
     static func getConversionForEOSToUSD(completion: @escaping EOSConversion){
         EOSApi.getConvserionForEOS { (responseState, json, data) in
             if  responseState == .success{

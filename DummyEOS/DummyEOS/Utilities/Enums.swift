@@ -20,13 +20,11 @@ enum responseState {
 }
 
 enum typeOfCall : String{
-    
     case getAccountBalance = "&module=account&action=get_account_balance"
     case getResourceInfo = "&module=account&action=get_account_resource_info"
     case getAccountInfo = "&module=account&action=get_account_info"
     case getEOSConversionToUSD = "EOS/USD"
 }
-
 
 enum httpMethod:String {
     case post = "POST"
@@ -42,4 +40,13 @@ enum EOSAccountRowEstimatedHeight : CGFloat{
     case accountCellHeight = 80
     case accountHeaderHeight = 70
 }
+
+enum ProjectStoryboards: String{
+    case main = "Main"
+}
+
+enum ControllersList : String{
+    case eosAccountDetail = "EOSAccountController"
+}
+
 

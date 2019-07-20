@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 class UtilFunctions{
-
+    //add shadow and make button round rect
     static func cornerRadiusAndShadowForButtons(button : UIButton){
         button.layer.cornerRadius = 5
         button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -19,16 +19,15 @@ class UtilFunctions{
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 4.0
     }
+    //Util function for basic alert
     static func showAlert(_ title : String , message : String, presenter : UIViewController){
         let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction.init(title: "Ok", style: .default) { (action) in
-            
         }
         alert.addAction(action)
-        
         presenter.present(alert, animated: true, completion: nil)
     }
-    
+    //TableView nib registration
     static func registerNib(_ nibName : String, cellIdentifier : String , tblView : UITableView){
         let nib = UINib(nibName: nibName, bundle: nil)
         tblView.register(nib, forCellReuseIdentifier: cellIdentifier)

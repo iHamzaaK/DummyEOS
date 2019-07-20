@@ -12,7 +12,6 @@ import SwiftyJSON
 typealias completionBlock = (_ state: responseState, _ response : JSON, _ rawData : Data?) -> Void
 typealias failureCompletionBlock = (_ isSuccess: Bool, _ msg : String) -> Void
 
-
 struct EOSApi {
     static func getAccountBalanceInfo(accountName: String,completion: @escaping completionBlock){
         Router.shared.APIRouter(typeCall: .getAccountBalance, parameters: ["accountName" : accountName], method: .get, completion: completion)
@@ -23,7 +22,6 @@ struct EOSApi {
     static func getUserInfo(accountName: String,completion: @escaping completionBlock){
         Router.shared.APIRouter(typeCall: .getAccountInfo, parameters: ["accountName" : accountName], method: .get, completion: completion)
     }
-    
     static func getConvserionForEOS(completion: @escaping completionBlock){
         Router.shared.APIRouter(typeCall: .getEOSConversionToUSD, parameters: nil, method: .get, completion: completion)
     }
@@ -34,7 +32,7 @@ class Router {
     static let shared = Router()
     //api method to retrieve account info based on typeCall from server.
     func APIRouter(typeCall : typeOfCall , parameters: Dictionary<String,Any>?,method: httpMethod,completion: @escaping completionBlock){
-        
+        //Condition for url path for exchange rate and EOS data
         var urlString = ""
         if typeCall == typeOfCall.getEOSConversionToUSD {
             urlString = getURLPathForConversion(typeCall: typeCall.rawValue)
@@ -52,6 +50,7 @@ class Router {
             request.addValue(Constants.apiKeyForExchangeRate, forHTTPHeaderField: "X-CoinAPI-Key")
         }
         let dataTask =  session.dataTask(with: request as URLRequest)  { (data, response, error) in
+            //check error type if error is not nil and return msg based on its type
             guard error == nil else {
                 if error?._code == NSURLErrorTimedOut {
                     completion(.networkIssue,JSON.null, nil)
@@ -68,6 +67,7 @@ class Router {
                 completion(.unknown,JSON.null, nil)
                 return
             }
+            //Parse JSON
             do {
                 let jsonResult: Any = (try JSONSerialization.jsonObject(with: data, options:
                     JSONSerialization.ReadingOptions.mutableContainers))
@@ -91,20 +91,20 @@ class Router {
         }
         dataTask.resume()
     }
-    
+    //Append string for eosinfo call
     func getURLPathForEOSInfo(typeCall : String, accountName : String)-> String{
         let strURL =  Constants.baseURL + "apikey=" + Constants.apiKey + typeCall + "&account=" + accountName
         print(strURL)
         return strURL
         
     }
-    
+    //Append string for exchange rate
     func getURLPathForConversion(typeCall : String)-> String{
         let strURL =  Constants.baseURLForExchangeRate + typeCall
         print(strURL)
         return strURL
     }
-    
+    //Parse failure results
     func parseFailure(status: responseState, json: JSON, completion:failureCompletionBlock){
         //failure states of api
         switch status {
@@ -117,14 +117,11 @@ class Router {
                 completion(false, Constants.wentWrongError)
             }
             break
-            
         case .networkIssue:
             completion(false, Constants.internetError)
-            
-            break
+             break
         case .timeOut:
             completion(false, Constants.requestTimedOutError)
-            
             break
         case .unknown:
             completion(false, Constants.wentWrongError)
@@ -133,6 +130,5 @@ class Router {
             completion(false, Constants.wentWrongError)
             break
         }
-        
     }
 }

@@ -27,6 +27,14 @@ class EOSAccountController: UIViewController {
         super.viewDidLoad()
         self.customizeViews()
         self.customizeTableView()
+        self.getAllEOSData()
+    }
+
+}
+// MARK: Custom Functions
+extension EOSAccountController{
+    //Fetch all data from api
+    private func getAllEOSData(){
         hud.textLabel.text = "Fetching data"
         let example = "helloworldjs"
         hud.show(in: self.view)
@@ -46,14 +54,10 @@ class EOSAccountController: UIViewController {
             }
             else{
                 UtilFunctions.showAlert(Constants.errorTitle, message: msg, presenter: self)
-
             }
         }
     }
-
-}
-extension EOSAccountController{
-    
+    //Displaying data after fetching from webservice.
     private func setData(){
         DispatchQueue.main.async {
             guard let eosViewModel = self.eosViewModel else { return }
@@ -63,7 +67,7 @@ extension EOSAccountController{
         }
         getExchangeRateForEOS()
     }
-    
+    //TableView customization
     private func customizeTableView(){
         self.tblViewResource.estimatedRowHeight = EOSAccountRowEstimatedHeight.accountCellHeight.rawValue
         self.tblViewResource.rowHeight = UITableView.automaticDimension
@@ -73,13 +77,14 @@ extension EOSAccountController{
         UtilFunctions.registerNib(EOSAccountCells.resourceHeaderView.rawValue, cellIdentifier: EOSAccountCells.resourceHeaderView.rawValue, tblView: tblViewResource)
         tblViewResource.allowsSelection = false
     }
-    
+    //General method for customizing view of controller
     private func customizeViews(){
+        //added shadow and corner radius for btnBuy, btnReceive and btnSend
         UtilFunctions.cornerRadiusAndShadowForButtons(button: btnBuy)
         UtilFunctions.cornerRadiusAndShadowForButtons(button: btnReceive)
         UtilFunctions.cornerRadiusAndShadowForButtons(button: btnSend)
     }
-    
+    //Get exchange rate for eos to usd
     func getExchangeRateForEOS(){
         EOSAccountSerivce.getConversionForEOSToUSD { (isSuccess, rate, msg) in
             if isSuccess{
@@ -95,12 +100,11 @@ extension EOSAccountController{
                 DispatchQueue.main.async {
                     self.hud.dismiss(animated: false)
                 }
-//                self.getExchangeRateForEOS()
             }
         }
     }
 }
-
+// MARK:  IBActions
 extension EOSAccountController{
     
     @IBAction func didTapOnBuyBtn(sender: UIButton){
@@ -114,10 +118,11 @@ extension EOSAccountController{
     }
     
 }
-
+// MARK: Tableview delegates and datasource
 extension EOSAccountController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //if viewmodel is empty return 0
         guard let eosViewModel = self.eosViewModel else { return 0}
         return eosViewModel.getArrResourceCount()
     }
@@ -130,6 +135,7 @@ extension EOSAccountController : UITableViewDelegate, UITableViewDataSource{
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //setting up resourceHeaderViewCell as header for resourceTableView
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: EOSAccountCells.resourceHeaderView.rawValue) as! ResourceHeaderViewCell
         headerCell.lblStaked.text = self.eosViewModel?.cpuStaked
         return headerCell

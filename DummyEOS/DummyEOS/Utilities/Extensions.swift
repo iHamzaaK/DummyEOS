@@ -18,17 +18,19 @@ extension Double {
     
 }
 extension String{
+    //add $ and = sign before a string
     func convertIntoCurrency()-> String{
         return "= " + self + " $"
     }
 }
 
 extension UILabel {
+    //Increase font of first letter of a label
     func setFirstLetterCapitalizedBold() {
         if let labelText = self.text {
         if labelText.count > 0 {
             let attText = NSMutableAttributedString(string: String(labelText.first!) + String(labelText.dropFirst()))
-            attText.setAttributes([NSAttributedString.Key.font:UIFont.init(name: "HelveticaNeue-Bold", size: 48)], range: NSRange(location: 0, length: 1))
+            attText.setAttributes([NSAttributedString.Key.font:UIFont.init(name: "HelveticaNeue-Medium", size: 48)!], range: NSRange(location: 0, length: 1))
             attributedText = attText
         }
     }

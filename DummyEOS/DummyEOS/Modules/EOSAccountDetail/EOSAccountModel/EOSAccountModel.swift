@@ -28,9 +28,4 @@ struct  EOSAccountModel {
     let stakeToSelf : String
     let unstake : String
     
-    
-    func parseModelFromJson(){
-        
-    }
-    
 }
