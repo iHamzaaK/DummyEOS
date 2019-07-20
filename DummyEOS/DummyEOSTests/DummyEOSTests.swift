@@ -60,6 +60,7 @@ class DummyEOSTests: XCTestCase {
     //User Account Balance api call test
     func testServiceCallForUserBalance()  {
         let expectation = self.expectation(description: "should recieve data")
+        DispatchQueue.main.async {
         EOSAccountSerivce.getUserAccountBalance(name: "helloworldjs") { (isSuccess, balanceModel, msg) in
             if isSuccess{
                 expectation.fulfill()
@@ -68,9 +69,12 @@ class DummyEOSTests: XCTestCase {
                 XCTFail("service failed")
             }
         }
+        }
         waitForExpectations(timeout: 20, handler: nil)
     }
     //Resource api call Test
+    //Uncomment to see a failed test
+    
     func testServiceCallForResource()  {
         let expectation = self.expectation(description: "should recieve data")
         EOSAccountSerivce.getUserResourceInfo(name: "helloworldjs") { (isSuccess, resourceModel, msg) in
@@ -83,6 +87,7 @@ class DummyEOSTests: XCTestCase {
         }
         waitForExpectations(timeout: 20, handler: nil)
     }
+    
     //EOSAccountViewModel Test
     func testEOSAccountViewModel(){
         XCTAssertEqual(sampleEOSBalance.balance, String(sampleEOSAccountViewModel.accountBalance ?? 0.0))
